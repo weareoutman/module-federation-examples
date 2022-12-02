@@ -14,6 +14,7 @@ module.exports = {
   output: {
     publicPath: 'auto',
   },
+  devtool: false,
   module: {
     rules: [
       {

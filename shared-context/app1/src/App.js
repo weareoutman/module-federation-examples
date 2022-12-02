@@ -5,6 +5,7 @@ const Welcome = React.lazy(() => import('app2/Welcome'));
 
 const App = () => (
   <div>
+    <x-button prefix="oops, ">yak</x-button>
     <h1>Context Provider</h1>
     <h2>App 1</h2>
     <NameContextProvider.Provider value="Billy">
