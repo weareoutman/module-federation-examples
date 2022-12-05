@@ -14,14 +14,30 @@ module.exports = {
   output: {
     publicPath: 'auto',
   },
+  devtool: false,
+  resolve: {
+    extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
+  },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.[tj]sx?$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
         options: {
-          presets: ['@babel/preset-react'],
+          presets: [
+            '@babel/preset-env',
+            '@babel/preset-react',
+            '@babel/preset-typescript',
+          ],
+          plugins: [
+            [
+              '@babel/plugin-proposal-decorators',
+              {
+                version: "2022-03"
+              }
+            ]
+          ]
         },
       },
     ],

@@ -1,13 +1,19 @@
 import React from 'react';
-import { createRoot } from "react-dom/client";
+import { createRoot, type Root } from "react-dom/client";
+import { createDecorators } from './decorators/createDecorators';
+import { UpdatingElement } from './decorators/UpdatingElement';
 
-class XButton extends HTMLElement {
-    /** @type import("react-dom/client").Root */
-    _root;
+const { defineElement, property } = createDecorators();
 
-    static get observedAttributes() {
-        return ["prefix"];
-    }
+@defineElement("x-button")
+class XButton extends UpdatingElement {
+    _root: Root;
+
+    @property()
+    test: string;
+
+    @property()
+    test2: string;
 
     get prefix() {
         return this.getAttribute("prefix");
@@ -34,4 +40,4 @@ class XButton extends HTMLElement {
     }
 }
 
-customElements.define("x-button", XButton);
+export { XButton };
